@@ -8,8 +8,31 @@ docker run -p 3000:3000 -d --name node-app node-app-image
 #For creating an image
 docker build .
 
-#list of created and opened containers
-docker ps
+#list of created and opened containers (-a for show all)
+docker ps -a
 
 #remove container
 docker rm node-app
+
+
+#log in to docker container
+docker exec -it node-app bash   // exit to exit
+
+printenv --> for env logs
+
+
+#sync code with docker container
+ docker run -p 3000:3000 -d --name node-app node-app-image -v C:\Users\arafa\OneDrive\Desktop\nodeDocker\:/app
+
+ shortcut :   docker run -v ${pwd}:/app -p 3000:3000 -d --name node-app node-app-image
+
+ more optimized : docker run -v ${pwd}:/app:ro -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image
+
+#logs for specific container
+ docker logs node-app
+
+
+
+
+
+

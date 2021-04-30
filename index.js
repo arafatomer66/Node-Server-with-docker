@@ -11,6 +11,6 @@ app.listen(port , () => {
 
 app.get("/" , (req,res) => {
     res.json({
-        "Message" : "App is on air"
+        "Message" : "App is on air , enjoy !!"
     });
 });
