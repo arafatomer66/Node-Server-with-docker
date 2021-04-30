@@ -34,11 +34,10 @@ printenv --> for env logs
 
 
  #Docker compose
-   docker-compose up -d -v
+   docker-compose up -d -v --build
    docker-compose down -d -v
 
 
 
-
-
-
+#Dev and production yml seperation and run command
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
