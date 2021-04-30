@@ -41,3 +41,18 @@ printenv --> for env logs
 
 #Dev and production yml seperation and run command
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+
+
+
+
+#mongo shell
+mongo -u "username" -p "password"
+
+- db  [db name]
+- use newDb [create new db]
+- db.books.insert({"name": "omer arafat"}) [insert data]
+
+
+
+#inspects any container
+docker inspect nodedocker_mongo_1
