@@ -11,7 +11,7 @@ exports.signUp = async (req, res ) => {
             username : username ,
             password : hashpassword
         });
-        req.session.user = user ;
+        // req.session.user = user ;
     res.status(200).json({
         data : {
             user
@@ -39,7 +39,7 @@ exports.signIn = async (req, res , next) => {
 
 
         if(isCorrect) {
-            req.session.user = user ;
+            // req.session.user = user ;
             res.status(200).json({
                 status: "success",
             });
