@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { MONGO_USER,MONGO_PASSWORD,MONGO_PORT, MONGO_IP } = require('./config/config');
-
-
+const postRouter = require("./routes/postRoutes");
 const app = express();
 
+
 const url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin` ;
+
 mongoose.connect(url , {
     useNewUrlParser : true ,
     useUnifiedTopology: true,
@@ -19,16 +20,22 @@ mongoose.connect(url , {
 
 const port = process.env.PORT || 3000 ;
 
-app.listen(port , () => {
-    console.log(`Server is running in ${port} port....`);
-});
 
+app.use(express.json());
 
 app.get("/" , (req,res) => {
     res.json({
         "Message" : "App is on air , enjoy !!!!!"
     });
 });
+
+app.use("/posts" , postRouter);
+
+app.listen(port , () => {
+    console.log(`Server is running in ${port} port....`);
+});
+
+
 
 
 // const connectWithRetry = () => {
