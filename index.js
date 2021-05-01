@@ -1,9 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { MONGO_USER,MONGO_PASSWORD,MONGO_PORT, MONGO_IP } = require('./config/config');
+
 
 const app = express();
 
-mongoose.connect('mongodb://omerarafat:omerarafat@mongo:27017/?authSource=admin').then(()=> {
+const url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin` ;
+mongoose.connect(url , {
+    useNewUrlParser : true ,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(()=> {
     console.log('database connected');
 }).catch((e) => {
     console.log(e);
@@ -22,3 +29,18 @@ app.get("/" , (req,res) => {
         "Message" : "App is on air , enjoy !!!!!"
     });
 });
+
+
+// const connectWithRetry = () => {
+//     mongoose.connect(url , {
+//         useNewUrlParser : true ,
+//         useUnifiedTopology: true,
+//         useFindAndModify: false
+//     }).then(()=> {
+//         console.log('database connected');
+//     }).catch((e) => {
+//         console.log(e);
+//         console.log('database not connected');
+//         setTimeout(connectWithRetry , 5000);
+//     });
+// }
