@@ -13,6 +13,11 @@ let redisClient = redis.createClient({
 });
 
 
+redisClient.on("error", function (err) {
+    console.log("Error " + err);
+});
+
+
 const url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin` ;
 
 mongoose.connect(url , {
