@@ -28,6 +28,7 @@ mongoose.connect(url , {
 
 const port = process.env.PORT || 3000 ;
 
+app.enable("trust proxy");
 app.use(session({
     store: new RedisStore({client : redisClient}),
     secret:SESSION_SECRET,
