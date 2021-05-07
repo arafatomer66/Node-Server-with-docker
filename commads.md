@@ -56,3 +56,6 @@ mongo -u "username" -p "password"
 
 #inspects any container
 docker inspect nodedocker_mongo_1
+
+
+#docker stop <container-name>
